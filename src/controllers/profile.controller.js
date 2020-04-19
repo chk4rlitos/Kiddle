@@ -11,7 +11,7 @@ profileCtrl.renderProfile =  async (req,res) => {
     }
     else
     {
-        req.flash("error_msg", "No Autorizado");
+        req.flash("error_msg", "Inicie sesión con las opciones de abajo.");
         res.redirect('/users/begin-session');        
     }
 }
