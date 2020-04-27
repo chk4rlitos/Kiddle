@@ -7,7 +7,7 @@ router.get('/oauth/twitter', passport.authenticate('twitter', {scope:['email']})
 
 router.get('/auth/twitter/callback', passport.authenticate('twitter',
     { 
-        successRedirect: '/user/profile',
+        successRedirect: '/profile',
         failureRedirect: '/users/begin-session' 
     }
  ));

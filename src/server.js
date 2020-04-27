@@ -1,4 +1,6 @@
 const express = require('express');
+const multer  = require('multer');
+
 const exphbs = require('express-handlebars') 
 const morgan = require('morgan');
 const path = require('path');
@@ -27,8 +29,11 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 //Middlewares
+
 app.use(morgan('dev'));
 //app.use(express.urlencoded({extended:false}));
+
+app.use(multer({dest: path.join(__dirname, './public/upload')}).single('image'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}))
@@ -47,7 +52,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
 //Global Variables
 app.use((req,res,next) => {
     res.locals.success_msg=req.flash("success_msg");
@@ -59,12 +63,15 @@ app.use((req,res,next) => {
 });
 
 
+// app.use('/public',express.static(`${__dirname}/public/upload`));
+
 //Routes
 app.use(require('./routes/home.routes'));
 app.use(require('./routes/user.routes'));
 app.use(require('./routes/profile.routes'));
 app.use(require('./routes/facebook.routes'));
 app.use(require('./routes/twitter.routes'));
+app.use(require('./routes/product.routes'));
 
 
 //Static_Files

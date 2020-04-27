@@ -7,6 +7,6 @@ const{renderProfile,renderProfileFb} = require('../controllers/profile.controlle
 
 const {isAuthenticated} = require('../helpers/auth.js')
 
-router.get('/user/profile', renderProfile); //isAuthenticated
+router.get('/profile',isAuthenticated, renderProfile); //isAuthenticated
 
 module.exports=router;

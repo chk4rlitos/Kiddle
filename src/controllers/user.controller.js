@@ -21,7 +21,6 @@ userCtrl.Access = async (req,res) => {
         res.render('users/new-register',{
             errors,
             name,
-            lastname,
             email
         })
     } else if (password==confirm_password)
@@ -63,7 +62,7 @@ userCtrl.renderBeginSesionForm = (req,res) => {
 
 userCtrl.Begin=passport.authenticate('local',{
     failureRedirect:'/users/begin-session',
-    successRedirect:'/user/profile',
+    successRedirect:'/profile',
     failureFlash:true  
 });
 

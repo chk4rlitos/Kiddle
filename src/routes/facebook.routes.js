@@ -8,7 +8,7 @@ const passport = require('passport');
 router.get('/auth/facebook', passport.authenticate('facebook', {scope:['email']}));
 router.get('/auth/facebook/callback', passport.authenticate('facebook',
   { 
-   successRedirect: '/user/profile',
+   successRedirect: '/profile',
    failureRedirect: '/users/begin-session' 
   }
 ));

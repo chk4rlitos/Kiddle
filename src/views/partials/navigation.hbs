@@ -1,42 +1,45 @@
-<nav class="top-nav"> </nav>
-  <ul class="sidenav sidenav-chk">
-  {{!-- <a href="#" class="btn-slide"><i class=" icono fa fa-angle-double-right btn-slide"></i></a>
-  <a href="#" class="btn-slide-izquierda"><i class=" icono fa fa-angle-double-left"></i></a> --}}
+{{#if user }}
+  <nav class="profile-nav">
+    <nav class="pull-right">
+    </nav>          
+  </nav>
+{{else}}
+<nav class="top-nav"></nav>
+{{/if}}
+<ul class="sidenav sidenav-chk">
   <div class="contenedor-menu">
-    <a href="#" class="btn-menu">Menu <i class=" icono fa fa-bars" ></i></a>
+    <a href="#" class="btn-menu">Menu <i class=" icono fa fa-bars"></i></a>
     <li>
       {{#if user }}
-          {{#if user.photo }}
-            <center>
-                <img src="{{user.photo}}" class="logo">
-            </center>
-          {{else}}
-              <center><img src="../img/logo.png" class="logo"></center>
-          {{/if}}
-      {{else}} 
-              <center><img src="../img/bienvenido.png" class="logo"></center>
+      {{#if user.photo }}
+      <center>
+        <img src="{{user.photo}}" class="logo">
+      </center>
+      {{else}}
+      <center><img src="/img/logo.png" class="logo"></center>
+      {{/if}}
+      {{else}}
+      <center><img src="/img/bienvenido.png" class="logo"></center>
       {{/if}}
     </li>
     <br>
     <ul class="menu">
       {{#if user }}
-        <li class="bold"><a class="collapsible-header"><i class="fa fa-user-o"></i> {{user.name}}</a>
-          <ul>
-            <li><a href=""><i class="fa fa-list-alt"></i> Listar</a></li>
-            <li class=""><a href=""><i class="fa fa-street-view"></i> Ver Kiddle</a></li>
-            <li class=""><a href=""><i class="fa fa-share-alt"></i>   Compartir</a></li>
-            <li class=""><a href="../users/logout"><i class="fa fa-power-off"></i> Salir</i></a></li>
-          </ul>
-        </li> 
+      <li class="bold"><a href="/profile" class="collapsible-header"><i class="fa fa-user-o"></i> {{user.name}}</a>
+        <li class="bold"><a href="/product/list-product" class="collapsible-header"><i class="fa fa-shopping-basket"></i> Productos</a></li>  
+        <li class=""><a href=""><i class="fa fa-street-view"></i> Ver Kiddle</a></li>
+        <li class=""><a href=""><i class="fa fa-share-alt"></i> Compartir</a></li>
+        <li class=""><a href="/users/logout"><i class="fa fa-power-off"></i> Salir</i></a></li>
+      </li>
       {{else}}
-          <li class="bold"><a href="/" class="collapsible-header"><i class="fa fa-home"></i> Inicio</a>      
-          <li class="bold"><a class="collapsible-header"><i class="fa fa-hand-o-right"></i> Acceso</a>
-            <ul>
-              <li><a href="../users/begin-session"><i class="fa fa-envelope-open"></i>  Iniciar Sesión</a></li>              
-              <li><a href="../users/new-register"><i class="fa fa-user-circle"></i>  Registrarse</a></li>
-            </ul>
-          </li>         
-       {{/if}}
+      <li class="bold"><a href="/" class="collapsible-header"><i class="fa fa-home"></i> Inicio</a>
+      <li class="bold"><a class="collapsible-header"><i class="fa fa-hand-o-right"></i> Acceso</a>
+        <ul>
+          <li><a href="/users/begin-session"><i class="fa fa-envelope-open"></i> Iniciar Sesión</a></li>
+          <li><a href="/users/new-register"><i class="fa fa-user-circle"></i> Registrarse</a></li>
+        </ul>
+      </li>
+      {{/if}}
     </ul>
     <li>
       <div class="divider"></div>
