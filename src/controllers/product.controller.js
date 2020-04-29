@@ -7,8 +7,6 @@ ProductCtl.createNewProduct = async (req,res) => {
     const errors = [];    
     const ProductValida = req.body;
     const user = req.user;
-
-    console.log(ProductValida);
     if(ProductValida.name.length < 3){
       errors.push({text:"Ingrese un nombre válido"});
     }    
@@ -46,7 +44,7 @@ ProductCtl.createNewProduct = async (req,res) => {
               res.redirect("/product/list-product");           
             } else {
               await fs.unlink(imageTempPath);
-              req.flash("error_msg", "Solo imagenes.... Verificar archivo.");   
+              req.flash("modalerror", "Solo imagenes.... Verificar archivo.");   
               res.redirect("/product/new-product"); 
             }            
           }
@@ -86,6 +84,12 @@ ProductCtl.renderUpdateProductForm = async (req,res) => {
   await Product.findByIdAndUpdate(req.params.id, {name,description,characteristics});   
   req.flash('success_msg', 'Su registro se actualizó de manera satisfacctoria.');  
   res.redirect('/product/list-product');
+}
+
+ProductCtl.renderDeleteProduct = async (req,res) => {
+  const user = req.user;    
+  const product = await Product.findById(req.params.id);    
+  res.render('product/delete-product', {user,product});
 }
 
 ProductCtl.renderDeleteProductForm = async (req,res) => {

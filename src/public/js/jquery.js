@@ -39,25 +39,20 @@ $(document).ready(function(){
     })
 });
 
-// $(document).ready(function(){
+function ModalNuevo(url){
+    $('#nuevo').load(url, function(){       
+        $(this).modal('show');
+    })    
+}  
 
-//     $('.btn-slide').click(function(){
-//         $('.sidenav .contenedor-menu').slideToggle();          
-//         $('.btn-slide-izquierda').css({'display':'block'});
-//         $('.btn-slide').css({'display':'none'});            
-//         // $('nav').removeClass('top-nav');
-//         // $('nav').addClass('navbar navbar-dark bg-dark');   
-//     });
-// });
+function ModalEditar(url){
+    $('#edicion').load(url, function(){       
+        $(this).modal('show');
+    })
+}  
 
-// $(document).ready(function(){
-
-//     $('.btn-slide-izquierda').click(function(){
-//         $('.sidenav .contenedor-menu').slideToggle('show');  
-//         $('.btn-slide-izquierda').css({'display':'none'});                   
-//         $('.btn-slide').css({'display':'block'});                 
-//         // $('nav').removeClass('navbar navbar-dark bg-dark');
-//         // $('nav').addClass('top-nav');       
-       
-//     });    
-// });
+function ModalDelete(url){
+    $('#delete').load(url, function(){       
+        $(this).modal('show');
+    })
+}  

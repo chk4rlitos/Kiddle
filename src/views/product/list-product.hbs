@@ -1,46 +1,22 @@
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="/product/new-product" method="POST" enctype="multipart/form-data">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Registrar Producto</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>            
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control"  placeholder="Nombre" autofocus required>
-                        </div>
-                        <div class="form-group">
-                            <textarea type="text" name="description" class="form-control" placeholder="Descripcion" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <textarea type="text" name="characteristics" class="form-control" placeholder="Caracteristicas" required></textarea>
-                        </div>                                                
-                        <div class="form-group">
-                            <input type="file" name="image" placeholder="Description" class="form-control"></file>
-                        </div>
-                    </div>           
-                    <div class="modal-footer">
-                        <button class="btn btn-success">Guardar</button>
-                    </div>                                                 
-                </form>
-            </div>
-        </div>
-    </div>
+<div class="modal fade" id="nuevo" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">  
+</div>
+<div class="modal fade" id="edicion" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+</div>  
 
+<div class="modal fade" id="delete" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+</div>     
 
 <div class="container-listas"> 
     <div class="row">       
         <div class="col m18 m2 offset-m1">  
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-               {{!-- <a href="/product/new-product"><i class="fa fa-plus"> Agregar</i></a> --}}
-                <i class="fa fa-plus"> Agregar</i></a>
+              <button type="button" onclick="ModalNuevo('/product/new-product')" class="btn btn-success" data-toggle="modal">
+                <i class="fa fa-plus"></i></a>
               </button>          
-              <br>   
-              <br>                   
+              <br>               
+              <br>
             <table class="table table-striped responsive">
                 <thead>
                     <tr>
@@ -49,8 +25,7 @@
                         <th scope="col">Descripcion</th>
                         <th scope="col">Caracteristicas</th>
                         <th scope="col">Imagen</th>
-                        <th scope="col"> #Editar </th>
-                        <th scope="col"> #Eliminar  </th>
+                        <th scope="col"> Opciones </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,15 +35,19 @@
                         <td>{{name}}</td>
                         <td>{{description}}</td>
                         <td>{{characteristics}}</td>
-                        <td><a target="_blank" href="/upload/{{image}}">App </a></td>
-                        <td><a href="/product/edit-product/{{_id}}"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#staticBackdrop150"><i class="fa fa-pencil"></i></button></a></td>
                         <td>
-                                <form action="/product/delete/{{_id}}?_method=PUT" method="POST">
-                                    <input type="hidden" name="_method" value="PUT">
-                                    <button type="submit"  class="btn btn-danger"><i class="fa fa-trash"></i>
-                                    </button>
-                                </form> 
-
+                            {{#if image }}
+                                <a target="_blank" href="/upload/{{image}}">App </a>   
+                                         
+                            {{/if}}
+                            
+                        </td>
+                        <td>
+                            <button type="button"  onclick="ModalEditar('/product/edit-product/{{_id}}')" class="btn btn-warning" data-toggle="modal">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button type="button" onclick="ModalDelete('/product/delete-product/{{_id}}')" class="btn btn-danger"><i class="fa fa-trash"></i>
+                            </button>                            
                         </td>
                     </tr>
                     {{/each}}
@@ -76,5 +55,6 @@
             </table>
 
         </div>
-    </div>
+    </div>   
 </div>
+  

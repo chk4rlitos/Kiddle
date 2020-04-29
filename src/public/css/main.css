@@ -9,6 +9,25 @@
  
 
 
+.invalid{
+  border-color: #f55 !important;
+}
+
+.help-block {
+  display: block;
+  color: red;
+  font-size: 10px;
+}
+
+.help-inline {
+  display: none;
+}
+
+.hide{
+  display: none;
+  
+}
+
 .pull-right {
   float: right ;
 }
