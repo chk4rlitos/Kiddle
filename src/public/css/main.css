@@ -6,8 +6,89 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
- 
 
+
+
+
+
+
+.btn-floating {
+  display: inline-block;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  background-color: #26a69a;
+  border-radius: 50%;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.btn-floating:hover {
+  background-color: #26a69a;
+}
+
+.btn-floating:before {
+  border-radius: 0;
+}
+
+.btn-floating.btn-large {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+}
+
+.btn-floating.btn-large.halfway-fab {
+  bottom: -28px;
+}
+
+.btn-floating.btn-large i {
+  line-height: 56px;
+}
+
+.btn-floating.btn-small {
+  width: 32.4px;
+  height: 32.4px;
+}
+
+.btn-floating.btn-small.halfway-fab {
+  bottom: -16.2px;
+}
+
+.btn-floating.btn-small i {
+  line-height: 32.4px;
+}
+
+.btn-floating.halfway-fab {
+  position: absolute;
+  right: 24px;
+  bottom: -20px;
+}
+
+.btn-floating.halfway-fab.left {
+  right: auto;
+  left: 24px;
+}
+
+.btn-floating i {
+  width: inherit;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 40px;
+}
+
+
+
+
+ 
 
 .invalid{
   border-color: #f55 !important;
@@ -28,8 +109,11 @@
   
 }
 
+
+
 .pull-right {
   float: right ;
+  padding-right: 10px;
 }
 
 
@@ -1004,7 +1088,7 @@ header, main, footer {
 }
 
 .btn-menu{
-    display: none;    
+    /* display: none;     */
     padding: 20px;
     background:#34495e;
     color: rgba(0, 0, 0, 0.87);

@@ -1,4 +1,36 @@
 $(document).ready(function(){
+    $("form").on("submit", function(event){           
+        // Y se procede a hacerlo vía AJAX
+        // $.ajax({
+        //     url: $(this).prop("action"),
+        //     type: $(this).prop("method"),
+        //     data: $(this).serialize(),
+        //     dataType: "json",
+        // }).done(function(response){
+        //     if (response.estado == "ok"){
+        //         alert("El proceso fue exitoso: " + response.mensaje);
+        //     }
+        //     else{
+        //         alert("Ha ocurrido un error: " + response.mensaje);
+        //     }
+        // }).fail(function(xhr, error){
+        //     alert(error);
+        // });       
+    });
+
+          
+    $('#menu').click(function(e){      
+        e.preventDefault();
+        $('.sidenav-chk').slideToggle();
+        var nuevoCSS = { "float": 'none', 'width':'100%'};
+        $('.container-listas').css(nuevoCSS);
+    }) 
+    $('#menudesa').click(function(e){      
+        e.preventDefault();
+        $('.sidenav-chk').slideToggle();
+        var nuevoCSS = { "float": 'right', 'width':'90%'};
+        $('.container-listas').css(nuevoCSS);      
+    })                  
     $('.menu li:has(ul)').click(function(e){
         e.preventDefault();
 
@@ -12,7 +44,6 @@ $(document).ready(function(){
             $(this).children('ul').slideDown();            
         }
     });
-
     $('.btn-menu').click(function(){
         $('.contenedor-menu .menu').slideToggle();
     });
@@ -39,20 +70,43 @@ $(document).ready(function(){
     })
 });
 
-function ModalNuevo(url){
-    $('#nuevo').load(url, function(){       
-        $(this).modal('show');
-    })    
-}  
 
+// function Admin(url){
+
+//     $(this).parent().remove(); 
+//     window.location.href=url;  
+    
+
+function ModalNuevo(url){
+    nuevoModal(url);
+}  
 function ModalEditar(url){
-    $('#edicion').load(url, function(){       
-        $(this).modal('show');
-    })
+    editarModal(url);
 }  
 
 function ModalDelete(url){
-    $('#delete').load(url, function(){       
+    deleteModal(url);
+}  
+
+
+function nuevoModal(url){
+    $('#nuevo').load(url, function(){      
+        $(this).modal('show');
+    })    
+}
+function editarModal(url){
+    $('#edicion').load(url, function(){              
         $(this).modal('show');
     })
-}  
+}
+function deleteModal(url){
+    $('#delete').load(url, function(){       
+        $(this).modal('show');
+    })  
+}
+
+function mensaje(){
+    $('#mensajeRespuesta').load('/partials/messages', function(){       
+        $(this).modal('show');
+    })      
+}

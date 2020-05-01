@@ -6,7 +6,11 @@ $(document).ready(function(){
                  validators: {
                     notEmpty: {
                          message: 'Ingrese un nombre '
-                     }                                        
+                     },
+                     stringLength: {
+                        min: 3,
+                        message: 'Ingrese un nombre correcto'
+                    }                                                                 
                  }
              },
              description: {

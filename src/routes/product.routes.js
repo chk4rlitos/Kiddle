@@ -12,7 +12,7 @@ const {
         renderDeleteProductForm
 }
  = require('../controllers/product.controller');
-const {isAuthenticated} = require('../helpers/auth.js')
+const {isAuthenticated} = require('../helpers/auth.js');
 
 router.get('/product/list-product',isAuthenticated,renderProducts)
 
