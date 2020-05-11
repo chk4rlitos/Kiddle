@@ -3,6 +3,7 @@ const User= require('../models/User');
 const LocalStrategy = require('passport-local').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const GoogleStrategy=require('passport-google-oauth20').Strategy;
 const config=require('./config');   
 
 
@@ -16,6 +17,44 @@ passport.deserializeUser((id,done)=>{
     })
 }); 
 
+
+passport.use(new GoogleStrategy({
+    clientID: config.google.id,
+    clientSecret: config.google.secret,
+    callbackURL: "/auth/google/callback"
+}, 
+async function(accessToken, refreshToken, profile, done)   {
+    await User.findOne({provider_id: profile.id}, async function (err, user) {
+        if(err) throw(err);
+        // Si existe en la Base de Datos, lo devuelve
+        if(!err && user!= null)
+        {
+            return done(null, user);
+        }
+        else{
+            const SuperUser = await User.find({is_superuser:1,is_active:1});
+            if(SuperUser)
+            {
+                                  
+                return done(null,false);
+           
+            }
+            var userData = new User({
+                        provider_id : profile.id,
+                        name	    : profile.displayName,
+                        email		: profile.emails[0].value,
+                        photo       : profile._json.picture,
+                        is_active   : 1,
+                        is_superuser: 1                    
+                    });
+                    userData.save(function(err) {
+                        if(err) throw err;
+                        done(null, userData);
+                    });                
+            }
+      });
+    }
+));
 
 
 // Configuración del autenticado con Twitter
@@ -34,7 +73,9 @@ passport.use(new TwitterStrategy({
             provider_id	: profile.id,
             provider	: profile.provider,
             name		: profile.displayName,
-            photo		: profile.photos[0].value
+            photo		: profile.photos[0].value,
+            is_active : 1,
+            is_superuser:0
         });
         //...y lo almacena en la base de datos
         user.save(function(err) {
@@ -64,7 +105,9 @@ passport.use(new FacebookStrategy({
             provider    : profile.provider,
             email       : profile.emails[0].value,
             name		: profile.displayName,
-            photo		: profile.photos[0].value
+            photo		: profile.photos[0].value,
+            is_active   : 1,
+            is_superuser : 0
         });
         user.save(function(err) {
             if(err) throw err;

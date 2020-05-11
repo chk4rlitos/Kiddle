@@ -16,7 +16,14 @@ const UserSchema =new Schema({
     },
     password:{
         type:String
+    },
+    is_active : {
+        type:Boolean
+    },
+    is_superuser:{
+        type:Boolean
     }
+
 },{
     timestamps:true,
     toObject: {

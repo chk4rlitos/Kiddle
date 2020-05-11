@@ -73,6 +73,7 @@ app.use(require('./routes/facebook.routes'));
 app.use(require('./routes/twitter.routes'));
 app.use(require('./routes/product.routes'));
 app.use(require('./routes/admin.routes'));
+app.use(require('./routes/google.routes'));
 
 
 //Static_Files

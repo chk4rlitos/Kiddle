@@ -40,7 +40,9 @@ userCtrl.Access = async (req,res) => {
                 name	    : name ,
                 provider_id    : email,
                 email       : email,
-                password	: password
+                password	: password,
+                is_active   : 1,
+                is_superuser: 0
             });
 
             newUser.password = await newUser.encrypPassword(password);
@@ -72,4 +74,64 @@ userCtrl.logout = (req,res) => {
     res.redirect('/users/begin-session');
 }
 
+userCtrl.renderListarUsuarios= async (req,res) => {
+    const user = req.user;
+    const usuarios = await User.find({});
+    res.render('users/list-users', {user,usuarios});
+}
+
+userCtrl.renderEditarUsuarios = async (req,res) => {
+    const user = req.user;
+    const usuarios = await User.findById(req.params.id);    
+    console.log("holaaa usuarios");
+    res.render('users/edit-users', {
+        user,
+        usuarios
+     });
+                
+}
+userCtrl.renderEditarUsuariosForm = async (req,res) => {
+    const {name,email,is_active,is_superuser} = req.body;  
+    await User.findByIdAndUpdate(req.params.id, {name,email,is_active,is_superuser});   
+    req.flash('success_msg', 'Su registro se actualizó de manera satisfacctoria.');  
+    res.redirect('/users/list-users');
+  }
+
+userCtrl.renderBuscarUsuarios = async(req,res) => {
+    const user = req.user;
+    const condicion=req.query.condicion;
+    const email = req.query.email||'';
+    const nombre = req.query.nombre;
+    
+    if(nombre || email)
+    {
+        if(condicion == 'true')
+        {
+            const verdadero=true;
+            const usuarios = await User.find({$or:[{email:email}, {name:nombre}]});
+            res.render('users/list-users', {user,usuarios,email,nombre,condicion,verdadero});
+        }
+        else 
+        {
+            const falso=true;
+            const usuarios = await User.find({$or:[{email:email}, {name:nombre}]});
+            res.render('users/list-users', {user,usuarios,email,nombre,condicion,falso});
+        }
+    }
+    else if (condicion)
+    {
+        if(condicion == 'true')
+        {
+            const verdadero=true;
+            const usuarios = await User.find({is_active:condicion});
+            res.render('users/list-users', {user,usuarios,email,nombre,condicion,verdadero});             
+        }
+        else
+        {
+            const falso=true;
+            const usuarios = await User.find({is_active:condicion});
+            res.render('users/list-users', {user,usuarios,email,nombre,condicion,falso});               
+        }      
+    }
+}  
 module.exports = userCtrl;
