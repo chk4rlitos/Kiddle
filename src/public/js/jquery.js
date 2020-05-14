@@ -21,15 +21,22 @@ $(document).ready(function(){
           
     $('#menu').click(function(e){      
         e.preventDefault();
-        $('.sidenav-chk').slideToggle();
-        var nuevoCSS = { "float": 'none', 'width':'100%'};
+        var nuevoCSS = {'width':'100%', "transition":'all 500ms linear'};
+        var cssside = {"transition":'all 800ms linear'};
         $('.container-listas').css(nuevoCSS);
+        $('.sidenav-chk').css(cssside);
+        $('.sidenav-chk').slideToggle("slow", function(){
+            
+        });        
     }) 
     $('#menudesa').click(function(e){      
         e.preventDefault();
-        $('.sidenav-chk').slideToggle();
-        var nuevoCSS = { "float": 'right', 'width':'90%'};
-        $('.container-listas').css(nuevoCSS);      
+        var nuevoCSS = {'width':'91%',"transition":'all 500ms linear'};
+        var cssside = {"transition":'all 1500ms linear'};        
+        $('.container-listas').css(nuevoCSS);          
+        $('.sidenav-chk').css(cssside);
+        $('.sidenav-chk').slideToggle("slow", function(){
+        });                   
     })                  
     $('.menu li:has(ul)').click(function(e){
         e.preventDefault();
@@ -70,12 +77,6 @@ $(document).ready(function(){
     })
 });
 
-
-// function Admin(url){
-
-//     $(this).parent().remove(); 
-//     window.location.href=url;  
-    
 
 function ModalNuevo(url){
     nuevoModal(url);

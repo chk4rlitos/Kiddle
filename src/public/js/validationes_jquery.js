@@ -40,7 +40,7 @@ $(document).ready(function(){
                     file: {
                         extension: 'png,jpeg,jpg,gif',
                         type: 'image/png,image/jpeg,image/gif',
-                        maxSize: 5*10,   // 5 MB
+                        maxSize: 2048*1024,   // 5 MB
                         message: 'El archivo seleccionado no es válido, debe ser (.png, .jpg, .jpeg, .gif) y 5 MB como máximo.'
                   }           
                 }
@@ -48,7 +48,47 @@ $(document).ready(function(){
 
             
         },
-    });        
+    });      
+    $('#ValidaEscala').bootstrapValidator({
+        message: 'This value is not valid',     
+        fields: {
+            name: {
+                 validators: {
+                    notEmpty: {
+                         message: 'Ingrese una escala '
+                     },
+                     stringLength: {
+                        min: 3,
+                        message: 'Ingrese una escala correcto'
+                    }                                                                 
+                 }
+             },
+             description: {
+                 validators: {
+                    notEmpty: {
+                         message: 'Ingrese una descripción'
+                     },
+                     stringLength: {
+                        min: 10,
+                        message: 'La descripcionbe debe tener más de 10 caracteres'
+                    }                     
+                 }
+             },
+             image :{
+                 validators :{
+                    file: {
+                        extension: 'png,jpeg,jpg,gif',
+                        type: 'image/png,image/jpeg,image/gif',
+                        maxSize: 2048*1024,   // 5 MB
+                        message: 'El archivo seleccionado no es válido, debe ser (.png, .jpg, .jpeg, .gif) y 5 MB como máximo.'
+                  }           
+                }
+             }        
+
+            
+        },
+    });            
+
 });    
 
 

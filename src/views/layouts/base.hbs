@@ -11,14 +11,17 @@
 </head>
 <body>
 
-
-            {{>navigation}}
+            {{#if modal_is_active}}
+            {{else}}
+                {{>navigation}}   
+           {{/if}} 
             <div class="container">
                 <br>
                 {{>messages}}
                 {{>errors}}
             </div>
             {{{body}}}
+                    
 
 
 

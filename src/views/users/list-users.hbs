@@ -1,59 +1,58 @@
 <div class="container-listas">
-    
+
     <div class="modal fade" id="edicion" data-backdrop="static" tabindex="-1" role="dialog"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    </div>  
-
+    </div>
     <div class="row">
         <div class="col md-12 m2 offset-m1">
-            <form  action="/users/buscar-usuarios"  method="GET" enctype="multipart/form-data"> 
-                <div class="form-row align-items-center">
+            <form action="/users/buscar-usuarios" method="GET" enctype="multipart/form-data">
+                <div class="form-row align-items-center form-fixed">
                     <div class="col-auto my-1">
                         <select class="custom-select mr-sm-2 mb-4" id="inlineFormCustomSelect" name="condicion">
                             {{#if verdadero }}
-                                <option value="true" selected>Activos</option>
-                                <option value="false">Inactivos</option>
+                            <option value="true" selected>Activos</option>
+                            <option value="false">Inactivos</option>
                             {{else if falso }}
-                                <option value="true">Activos</option>
-                                <option value="false" selected>Inactivos</option>
+                            <option value="true">Activos</option>
+                            <option value="false" selected>Inactivos</option>
                             {{else}}
-                                <option value="true" selected>Activos</option>
-                                <option value="false">Inactivos</option>                            
+                            <option value="true" selected>Activos</option>
+                            <option value="false">Inactivos</option>
                             {{/if}}
 
                         </select>
-                    </div> 
+                    </div>
                     <div class="col-auto my-1">
-                        <div class="input-group  mr-sm-2 mb-4">    
+                        <div class="input-group  mr-sm-2 mb-4">
                             <div class="input-group-prepend">
-                            <div class="input-group-text">@</div>
+                                <div class="input-group-text">@</div>
                             </div>
-                            <input type="text" class="input-group-prepend" id="inlineFormInputGroupUsername2" placeholder="Email" name="email" value="{{email}}">
+                            <input type="text" class="input-group-prepend" id="inlineFormInputGroupUsername2"
+                                placeholder="Email" name="email" value="{{email}}">
                         </div>
-                    </div>     
+                    </div>
                     <div class="col-auto my-1">
-                        <div class="input-group  mr-sm-2 mb-4">    
+                        <div class="input-group  mr-sm-2 mb-4">
                             <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fa fa-user"></i>.</div>
+                                <div class="input-group-text"><i class="fa fa-user"></i>.</div>
                             </div>
-                            <input type="text" class="input-group-prepend" id="inlineFormInputGroupUsername2" placeholder="Nombres" name="nombre" value="{{nombre}}">
+                            <input type="text" class="input-group-prepend" id="inlineFormInputGroupUsername2"
+                                placeholder="Nombres" name="nombre" value="{{nombre}}">
                         </div>
-                    </div>                                                    
+                    </div>
                     <div class="col-auto my-1">
                         <button type="submit" class="btn btn-primary mb-4"><i class="fa fa-search-plus"></i></button>
                     </div>
-                   <div class="col-auto my-1">
+                    <div class="col-auto my-1">
                         <a href="/profile">
                             <button type="button" class="btn btn-success mb-4" data-toggle="modal">
                                 <i class="fa fa-cog"></i>
                             </button>
                         </a>
-                    </div>                    
+                    </div>
                 </div>
             </form>
-            
-            
-            <table class="table table-responsive">
+            <table class="table table-striped  table-bordered    responsive">
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
@@ -65,7 +64,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     {{#each usuarios }}
                     <tr>
                         <th scope="row">{{name}}</th>
@@ -92,14 +91,16 @@
                             {{/if}}
                         </td>
                         <td>
-                            <button type="button"  onclick="ModalEditar('/users/edit-users/{{_id}}')" class="btn btn-sm btn-warning" data-toggle="modal">
+                            <button type="button" onclick="ModalEditar('/users/edit-users/{{_id}}')"
+                                class="btn btn-sm btn-warning" data-toggle="modal">
                                 <i class="fa fa-pencil"></i>
                             </button>
-                            <button type="button" onclick="ModalDelete('/product/delete-product/{{_id}}')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
-                            </button>                            
-                        </td>                                     
-                    </tr>    
-                    {{/each}}                    
+                            <button type="button" onclick="ModalDelete('/product/delete-product/{{_id}}')"
+                                class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {{/each}}
                 </tbody>
             </table>
 

@@ -1,7 +1,11 @@
 <div class="container-listas">
     {{#if user.is_superuser }}
+
+    <div class="modal fade" id="nuevo" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    </div>
     <div class="row">
-        <div class="col md-12 m2 offset-m1">
+        <div class="col md-12 m1 offset-m1">
             <div class="row">
                 <div class="col-md-3">
                     <div class="card-profile">
@@ -11,13 +15,16 @@
                             </h4>
                             <table class="table table-hover">
                                 <tbody>
-                                    <tr> 
+                                    <tr>
                                         <td> Ver</td>
-                                        <td><a href="/users/listar-usuarios"><i class="fa fa-eye view right" aria-hidden="true"></i></a></td>
+                                        <td><a href="/users/listar-usuarios"><i class="fa fa-eye view right"
+                                                    aria-hidden="true"></i></a></td>
                                     </tr>
                                     <tr>
-                                        <td>Agregar</td>
-                                        <td><i class="fa fa-plus success right" aria-hidden="true"></i></td>
+                                        <td>Opciones</td>
+                                        <td>
+                                            <a href="#"><i class="fa fa-cog success right" aria-hidden="true"></i></a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -37,8 +44,10 @@
                                         <td><i class="fa fa-eye view right" aria-hidden="true"></i></td>
                                     </tr>
                                     <tr>
-                                        <td>Agregar</td>
-                                        <td><i class="fa fa-plus success right" aria-hidden="true"></i></td>
+                                        <td>Opciones</td>
+                                        <td>
+                                            <a href="#"><i class="fa fa-cog success right" aria-hidden="true"></i></a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -58,15 +67,74 @@
                                         <td><i class="fa fa-eye view right" aria-hidden="true"></i></td>
                                     </tr>
                                     <tr>
-                                        <td>Agregar</td>
-                                        <td><i class="fa fa-plus success right" aria-hidden="true"></i></td>
+                                        <td>Opciones</td>
+                                        <td>
+                                            <a href="#"><i class="fa fa-cog success right" aria-hidden="true"></i></a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                </div>
+                </div>   
+                <div class="col-md-3">
+                    <div class="card-profile">
+                        <div class="card-profile-body">
+                            <h4 class="card-profile-title d-flex justify-content-between align-items-center">
+                                Escalas <a href="#"> <i class="fa fa-crosshairs" aria-hidden="true"></i></a>
+                            </h4>
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>Ver</td>
+                                        <td><a href="/escalas/listar-categorias"><i class="fa fa-eye view right" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Opciones</td>
+                                        <td>
+                                            <a href="#"><i class="fa fa-cog success right" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>                                      
             </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card-profile">
+                        <div class="card-profile-body">
+                            <h4 class="card-profile-title d-flex justify-content-between align-items-center">
+                                Kiddle <a href="#"> <i class="fa fa-yelp" aria-hidden="true"></i></a>
+                            </h4>
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>Ver</td>
+                                        <td><i class="fa fa-eye view right" aria-hidden="true"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Opciones</td>
+                                        <td>
+                                            <a href="#"><i class="fa fa-cog success right" aria-hidden="true"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="row">
+        <div class="col md-12 m1 offset-m1">
+            <h1>Bienvenido a Kiddle: {{user.name}}</h1>
+            <p>...</p>
+            <p><a class="btn btn-info btn-lg" href="#" role="button"><i class="fa fa-yelp">Visualizar Nuestra Red Actual
+                    </i></a></p>
         </div>
     </div>
     {{/if}}

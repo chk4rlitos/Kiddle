@@ -74,6 +74,8 @@ app.use(require('./routes/twitter.routes'));
 app.use(require('./routes/product.routes'));
 app.use(require('./routes/admin.routes'));
 app.use(require('./routes/google.routes'));
+app.use(require('./routes/escalas.routes'));
+app.use(require('./routes/kiddle.routes'));
 
 
 //Static_Files

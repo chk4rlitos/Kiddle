@@ -34,8 +34,4 @@ ProductSchema.virtual('uniqueId')
     return this.name.replace(path.extname(this.name), '');
   });
 
-// ProductSchema.methods.setImgUrl =function setImgUrl (filename){
-//     this.file='http://localhost:4040/public/' + filename
-// }
-
 module.exports=model('Product',ProductSchema);

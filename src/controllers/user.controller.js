@@ -82,19 +82,29 @@ userCtrl.renderListarUsuarios= async (req,res) => {
 
 userCtrl.renderEditarUsuarios = async (req,res) => {
     const user = req.user;
-    const usuarios = await User.findById(req.params.id);    
-    console.log("holaaa usuarios");
+    const usuarios = await User.findById(req.params.id);  
+    const modal_is_active = 1; 
     res.render('users/edit-users', {
         user,
-        usuarios
+        usuarios,
+        modal_is_active
      });
                 
 }
 userCtrl.renderEditarUsuariosForm = async (req,res) => {
-    const {name,email,is_active,is_superuser} = req.body;  
+    var {name,email,is_active,is_superuser} = req.body;  
+
+    if(is_active === "on")
+    {
+        is_active=1;
+    }
+    if(is_superuser === "on")
+    {
+        is_superuser=1
+    }    
     await User.findByIdAndUpdate(req.params.id, {name,email,is_active,is_superuser});   
     req.flash('success_msg', 'Su registro se actualizó de manera satisfacctoria.');  
-    res.redirect('/users/list-users');
+    res.redirect('/users/listar-usuarios');
   }
 
 userCtrl.renderBuscarUsuarios = async(req,res) => {

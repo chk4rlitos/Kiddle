@@ -1,0 +1,64 @@
+<div class="container-listas">
+    <div class="modal fade" id="nuevo" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    </div>
+    <div class="modal fade" id="edicion" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    </div>      
+    <div class="row">
+        <div class="col md-12 m2 offset-m1">
+            <button type="button" onclick="ModalNuevo('/escalas/registrar-categorias')" class="btn btn-success mb-2"
+                data-toggle="modal">
+                <i class="fa fa-plus"></i>
+            </button>
+            <div class="pull-right-right">
+                <a href="/profile">
+                    <button type="button" class="btn btn-primary mb-2">
+                        <i class="fa fa-cog"></i>
+                    </button>
+                </a>
+            </div>
+            <table class="table table-hover table-bordered table-borderless responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Op.</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {{#each escalas }}
+                    <tr>
+                        <th scope="row">{{name}}</th>
+                        <td>{{description}}</td>
+                        <td>
+                            {{#if image}}
+                            <img src="/upload/{{image}}" class="logo">
+                            {{else}}
+                            {{/if}}
+                        </td>
+                        <td>
+                            {{#if state}}
+                            <i class="fa fa-chevron-circle-down success" aria-hidden="true"></i>
+                            {{else}}
+                            <i class="fa fa-times-circle danger" aria-hidden="true"></i>
+                            {{/if}}
+                        </td>
+                        <td>
+                            <button type="button" onclick="ModalEditar('/escalas/edit-escala/{{_id}}')"
+                                class="btn btn-sm btn-warning" data-toggle="modal">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>

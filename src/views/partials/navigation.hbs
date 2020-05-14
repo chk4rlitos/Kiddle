@@ -1,16 +1,16 @@
 {{#if user }}
   <nav class="profile-nav">
-    <a href="#" class="btn-floating" id="menudesa"> <i class=" icono fa fa-chevron-circle-left"></i></a>              
+    <a class="btn-floating" id="menudesa"> <i class=" icono fa fa-chevron-circle-left"></i></a>              
     <nav class="pull-right">
     </nav>          
   </nav>
 {{else}}
 <nav class="top-nav">
-<a href="#" class="btn-floating" id="menudesa"> <i class=" icono fa fa-chevron-circle-left"></i></a>    
+<a class="btn-floating" id="menudesa"> <i class=" icono fa fa-chevron-circle-left"></i></a>    
 </nav>
 {{/if}}
 <ul class="sidenav sidenav-chk">
-  <a href="#" class="btn-floating" id="menu"> <i class=" icono fa fa-chevron-circle-right"></i></a>  
+  <a class="btn-floating" id="menu"> <i class=" icono fa fa-chevron-circle-right"></i></a>  
   <div class="contenedor-menu">
     <li>
       {{#if user }}
@@ -30,9 +30,9 @@
       {{#if user }}
       <li class="bold"><a href="/profile" class="collapsible-header"><i class="fa fa-user-o"></i> {{user.name}}</a>
         <li class="bold"><a href="/product/list-product" class="collapsible-header"><i class="fa fa-shopping-basket"></i> Productos</a></li>  
-        <li class=""><a href=""><i class="fa fa-street-view"></i> Ver Kiddle</a></li>
-        <li class=""><a href=""><i class="fa fa-share-alt"></i> Compartir</a></li>
-        <li class=""><a href="/users/logout"><i class="fa fa-power-off"></i> Salir</i></a></li>
+        <li class="bold"><a href="" class="collapsible-header"><i class="fa fa-street-view"></i> Ver Kiddle</a></li>
+        <li class="bold"><a href="" class="collapsible-header"><i class="fa fa-share-alt"></i> Compartir</a></li>
+        <li class="bold"><a href="/users/logout" class="collapsible-header"><i class="fa fa-power-off"></i> Salir</i></a></li>
       </li>
       {{else}}
       <li class="bold"><a href="/" class="collapsible-header"><i class="fa fa-home"></i> Inicio</a>

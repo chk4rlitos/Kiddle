@@ -23,7 +23,7 @@ passport.use(new GoogleStrategy({
     clientSecret: config.google.secret,
     callbackURL: "/auth/google/callback"
 }, 
-async function(accessToken, refreshToken, profile, done)   {
+async function(accessToken, refreshToken, profile,done)   {
     await User.findOne({provider_id: profile.id}, async function (err, user) {
         if(err) throw(err);
         // Si existe en la Base de Datos, lo devuelve
@@ -32,12 +32,12 @@ async function(accessToken, refreshToken, profile, done)   {
             return done(null, user);
         }
         else{
-            const SuperUser = await User.find({is_superuser:1,is_active:1});
-            if(SuperUser)
-            {
-                                  
-                return done(null,false);
-           
+            // const SuperUser = await User.find({is_superuser:1,is_active:1}).count();
+            const SuperUser = await User.countDocuments({is_superuser:1,is_active:1});            
+            if(SuperUser === 1)
+            {           
+                return done(null,null,user); //,{message:"Usuario cuenta con SuperUser Logeado desde Google."});
+                // return done(null,false,{message:"Usuario Inactivo, Coordinar con el Admin."});                
             }
             var userData = new User({
                         provider_id : profile.id,
@@ -125,6 +125,13 @@ passport.use(new LocalStrategy({
     if(!user){
         return done(null,false,{message:"Usuario no existe"});
     }else{
+
+        //User is Active?
+        if(!user.is_active)
+        {
+            return done(null,false,{message:"Usuario Inactivo, Coordinar con el Admin."});
+        }
+
         //Match Password's User
         const match = await user.MatchPassword(password);
         if(match){

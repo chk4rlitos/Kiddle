@@ -66,16 +66,19 @@ ProductCtl.renderProducts = async (req,res) => {
 
 ProductCtl.renderProductForm = (req,res) => {
     const user = req.user;    
-    res.render('product/new-product', {user});
+    const modal_is_active = 1;      
+    res.render('product/new-product', {user,modal_is_active});
 }
 
 
 ProductCtl.renderUpdateProduct = async (req,res) => {
   const user = req.user;
+  const modal_is_active = 1;  
   const product = await Product.findById(req.params.id);  
   res.render('product/edit-product', {
       user,
-      product
+      product,
+      modal_is_active
   });
 }
 
@@ -88,8 +91,9 @@ ProductCtl.renderUpdateProductForm = async (req,res) => {
 
 ProductCtl.renderDeleteProduct = async (req,res) => {
   const user = req.user;    
-  const product = await Product.findById(req.params.id);    
-  res.render('product/delete-product', {user,product});
+  const product = await Product.findById(req.params.id);   
+  const modal_is_active = 1;     
+  res.render('product/delete-product', {user,product,modal_is_active});
 }
 
 ProductCtl.renderDeleteProductForm = async (req,res) => {
