@@ -55,6 +55,7 @@
             <table class="table table-striped  table-bordered    responsive">
                 <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Email</th>
                         <th scope="col">Foto</th>
@@ -67,7 +68,8 @@
 
                     {{#each usuarios }}
                     <tr>
-                        <th scope="row">{{name}}</th>
+                        <th scope="row">{{inc @index}}</th>
+                        <td>{{name}}</td>
                         <td>{{email}}</td>
                         <td>
                             {{#if photo}}

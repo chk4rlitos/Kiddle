@@ -88,6 +88,59 @@ $(document).ready(function(){
             
         },
     });            
+    $('#ValidaCompany').bootstrapValidator({
+        message: 'This value is not valid',     
+        fields: {
+            name: {
+                 validators: {
+                    notEmpty: {
+                         message: 'Ingrese un Nombre '
+                     },
+                     stringLength: {
+                        min: 3,
+                        message: 'Ingrese un nombre correcto'
+                    }                                                                 
+                 }
+             },
+             ruc: {
+                 validators: {
+                    regexp: {
+                        regexp: /^[0-9_]+$/,
+                        message: 'Soló deberia ingresar números'
+                    },                        
+                    notEmpty: {
+                         message: 'Ingrese una descripción'
+                     },
+                     stringLength: {
+                        min: 11,
+                        max:11,
+                        message: 'El RUC es de 11 caracteres'
+                    }                     
+                 }
+             },
+             direction: {
+                validators: {
+                   notEmpty: {
+                        message: 'Ingrese una dirección'
+                    },
+                    stringLength: {
+                       min: 10,
+                       message: 'La direcction debe tener más de 10 caracteres'
+                   }                     
+                }
+            },             
+             image :{
+                 validators :{
+                    file: {
+                        extension: 'png,jpeg,jpg,gif',
+                        type: 'image/png,image/jpeg,image/gif',
+                        maxSize: 2048*1024,   // 5 MB
+                        message: 'El archivo seleccionado no es válido, debe ser (.png, .jpg, .jpeg, .gif) y 5 MB como máximo.'
+                  }           
+                }
+             }        
+        },
+    });       
 
 });    
 

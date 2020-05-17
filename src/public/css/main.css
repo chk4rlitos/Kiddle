@@ -7,7 +7,6 @@
     box-sizing: border-box;
 }
 
-
 .btn-transparente {
   background-color: rgba(255, 255, 255, 0.397);
   border: rgba(255, 255, 255, 0.397);
@@ -248,11 +247,11 @@
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 1.25rem
+  padding: .80rem
 }
 
 .card-profile-title {
-  margin-bottom: .75rem
+  margin-bottom: .10rem
 }
 
 .card-profile-subtitle {

@@ -16,12 +16,12 @@ const passport = require('passport');
 const app = express();
 
 
-
 //Settings
 app.set('port', process.env.PORT || 4040);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
     defaultLayout:'base',
+    helpers: require('./helpers/handlebars_help'),    
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir:path.join(app.get('views'), 'partials'),
     extname : '.hbs'
@@ -29,6 +29,8 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 //Middlewares
+
+
 
 app.use(morgan('dev'));
 //app.use(express.urlencoded({extended:false}));
@@ -75,7 +77,7 @@ app.use(require('./routes/product.routes'));
 app.use(require('./routes/admin.routes'));
 app.use(require('./routes/google.routes'));
 app.use(require('./routes/escalas.routes'));
-app.use(require('./routes/kiddle.routes'));
+app.use(require('./routes/company.routes'));
 
 
 //Static_Files

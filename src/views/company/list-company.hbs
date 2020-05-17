@@ -1,0 +1,50 @@
+<div class="container-listas">
+    <div class="modal fade" id="nuevo" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    </div>
+    <div class="modal fade" id="edicion" data-backdrop="static" tabindex="-1" role="dialog"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    </div>        
+    <div class="row">
+        <div class="col md-12 m1 offset-m1">
+            <button type="button" onclick="ModalNuevo('/company/new-company')" class="btn btn-success mb-2"
+                data-toggle="modal">
+                <i class="fa fa-plus"></i>
+            </button>
+            <div class="pull-right-right">
+                <a href="/profile">
+                    <button type="button" class="btn btn-primary mb-2">
+                        <i class="fa fa-cog"></i>
+                    </button>
+                </a>
+            </div>
+            <div class="row">
+                {{#each company }}
+                <div class="col-md-3">
+                    <div class="card-profile">
+                        <div class="card-profile-body">
+                            <h6 class="card-profile-title d-flex justify-content-between align-items-center">
+                            {{#if state}}
+                            <i class="fa fa-chevron-circle-down success" aria-hidden="true"></i>
+                            {{else}}
+                            <i class="fa fa-times-circle danger" aria-hidden="true"></i>
+                            {{/if}} {{ruc}} 
+                                <button type="button" onclick="ModalEditar('/company/edit-company/{{_id}}')" class="btn btn-warning btn-sm"
+                                    data-toggle="modal">
+                                    <i class="fa fa-pencil"></i>
+                                </button>                                
+                            </h6>
+                            <center>{{name}} </center><p>
+                            {{direction}} <p>
+                            {{#each company_escalas}}   
+                                #:{{name}}
+                            {{/each}}  
+
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

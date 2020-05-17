@@ -1,0 +1,40 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form action="/company/new-company" method="POST" enctype="multipart/form-data" id="ValidaCompany">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Registrar Comercial</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Nombre" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="ruc" class="form-control" placeholder="RUC">
+                </div>
+                <div class="form-group">
+                    <textarea type="text" name="direction" class="form-control" placeholder="Dirección"></textarea>
+                </div>                
+                <div class="form-group">
+                    <input type="file" name="image" placeholder="Frontis" class="form-control"></file>
+                </div>
+                <div class="form-group">
+                    <select class="custom-select mr-sm-2 mb-4" id="inlineFormCustomSelect" name="escalaId">
+                        {{#each escalasNew }}
+                            {{#select escalasNew}}
+                            <option  value="{{_id}}">{{name}}</option>
+                            {{/select}}
+                        {{/each}}
+
+                    </select>
+                 </div>         
+                <input type="hidden" name="escalasNew" value='{{escalasNew}}'>       
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
