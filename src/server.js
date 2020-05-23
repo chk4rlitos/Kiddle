@@ -78,6 +78,7 @@ app.use(require('./routes/admin.routes'));
 app.use(require('./routes/google.routes'));
 app.use(require('./routes/escalas.routes'));
 app.use(require('./routes/company.routes'));
+app.use(require('./routes/menu.routes'));
 
 
 //Static_Files

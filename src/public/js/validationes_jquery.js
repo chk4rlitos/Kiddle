@@ -109,7 +109,7 @@ $(document).ready(function(){
                         message: 'Soló deberia ingresar números'
                     },                        
                     notEmpty: {
-                         message: 'Ingrese una descripción'
+                         message: 'Ingrese una ruc'
                      },
                      stringLength: {
                         min: 11,
@@ -138,9 +138,54 @@ $(document).ready(function(){
                         message: 'El archivo seleccionado no es válido, debe ser (.png, .jpg, .jpeg, .gif) y 5 MB como máximo.'
                   }           
                 }
-             }        
+             },        
         },
-    });       
+    });  
+    $('#ValidaMenu').bootstrapValidator({
+        message: 'This value is not valid',     
+        fields: {
+            name: {
+                 validators: {
+                    notEmpty: {
+                         message: 'Ingrese un Nombre '
+                     },
+                     stringLength: {
+                        min: 2,
+                        message: 'Ingrese un nombre correcto'
+                    }                                                                 
+                 }
+             },
+             description: {
+                 validators: {                    
+                    notEmpty: {
+                         message: 'Ingrese una descripción'
+                     },
+                     stringLength: {
+                        min: 10,
+                        message: 'El texto mínimo debe ser de 10 caracteres'
+                    }                     
+                 }
+             },           
+             price: {
+                validators: {                    
+                     regexp: {
+                        regexp: /^[0-9]^\d*(\.\d{0,2})?$+$/,
+                        message: 'Ingrese un precio correcto'
+                    }                  
+                }
+            },                 
+             image :{
+                 validators :{
+                    file: {
+                        extension: 'png,jpeg,jpg,gif',
+                        type: 'image/png,image/jpeg,image/gif',
+                        maxSize: 2048*1024,   // 5 MB
+                        message: 'El archivo seleccionado no es válido, debe ser (.png, .jpg, .jpeg, .gif) y 5 MB como máximo.'
+                  }           
+                }
+             },        
+        },
+    });            
 
 });    
 

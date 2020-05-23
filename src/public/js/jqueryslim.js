@@ -39,6 +39,7 @@
         n.head.appendChild(o).parentNode.removeChild(o)
     }
 
+
     function T(e) {
         return null == e ? e + "" : "object" == typeof e || "function" == typeof e ? n[o.call(e)] || "object" : typeof e
     }

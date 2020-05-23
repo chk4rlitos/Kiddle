@@ -9,20 +9,28 @@ const CompanySchema = new Schema({
     },
     ruc:{
         type: String,
-        required:true
+        required:true,
+        unique:true
+
     },
     direction:{
         type: String,
         required:true
     },    
+    eboleta : {
+        type:Boolean
+
+    },
+    efactura:{
+        type:Boolean
+    },
+
     image:{
         type:String
     },
-    escalaId :{
-        // id:{
+    escalaId :{        
             type:Schema.Types.ObjectId,
             ref:'Escalas'
-        // } 
     },
     state:{
         type:Number,
@@ -37,4 +45,4 @@ CompanySchema.methods.setImgUrl =function setImgUrl (filename){
 }
 
 
-module.exports=model('Company', CompanySchema);//  mongoose.model('Kiddle', KiddleSchema);
+module.exports=model('Company', CompanySchema);

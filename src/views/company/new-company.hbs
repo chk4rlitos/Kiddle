@@ -9,32 +9,47 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Nombre" autofocus>
+                    <input type="text" name="name" class="form-control" placeholder="Nombre" autofocus value="{{name}}">
                 </div>
                 <div class="form-group">
-                    <input type="text" name="ruc" class="form-control" placeholder="RUC">
+                    <input type="text" name="ruc" class="form-control" placeholder="RUC" value="{{ruc}}">
                 </div>
                 <div class="form-group">
-                    <textarea type="text" name="direction" class="form-control" placeholder="Dirección"></textarea>
-                </div>                
+                    <textarea type="text" name="direction" class="form-control" placeholder="Dirección" value="{{direction}}">{{direction}}</textarea>
+                </div>   
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" name="eboleta"  class="form-check-input" 
+                            {{#if eboleta}} checked {{/if}}>
+                        <label>Boleta ?</label>
+                    </div>
+                </div>     
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" name="efactura"  class="form-check-input"
+                            {{#if efactura}} checked {{/if}}>
+                        <label>Factura ?</label>
+                    </div>
+                </div>                                           
                 <div class="form-group">
                     <input type="file" name="image" placeholder="Frontis" class="form-control"></file>
                 </div>
                 <div class="form-group">
-                    <select class="custom-select mr-sm-2 mb-4" id="inlineFormCustomSelect" name="escalaId">
+               
+                    <select class="custom-select mr-sm-2 mb-4" id="inlineFormCustomSelect" name="escalaId" >
                         {{#each escalasNew }}
                             {{#select escalasNew}}
                             <option  value="{{_id}}">{{name}}</option>
                             {{/select}}
-                        {{/each}}
-
+                        {{/each}}                      
                     </select>
                  </div>         
-                <input type="hidden" name="escalasNew" value='{{escalasNew}}'>       
+                <input type="hidden" name="escalasNew" value="{{escalasNew}}">       
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success">Guardar</button>
-            </div>
+                <button type="submit" class="btn btn-success" id="companybutton">Guardar</button>
+                {{!-- <button type="button" class="btn btn-success" id="companybutton" >Guardar</button> --}}
+            </div>            
         </form>
     </div>
 </div>

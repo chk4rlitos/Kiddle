@@ -29,17 +29,22 @@
                             {{else}}
                             <i class="fa fa-times-circle danger" aria-hidden="true"></i>
                             {{/if}} {{ruc}} 
-                                <button type="button" onclick="ModalEditar('/company/edit-company/{{_id}}')" class="btn btn-warning btn-sm"
+                                <button type="button" onclick="ModalEditar('/company/edit-company/{{_id}}')" class="btn btn-warning btn-sms"
                                     data-toggle="modal">
                                     <i class="fa fa-pencil"></i>
                                 </button>                                
                             </h6>
                             <center>{{name}} </center><p>
-                            {{direction}} <p>
-                            {{#each company_escalas}}   
-                                #:{{name}}
-                            {{/each}}  
-
+                            <center>{{company_escalas.name}}</center>
+                            <br>
+                            <center>
+                                <a href="/menu/list-menu/{{_id}}">
+                                <i class="fa fa-outdent" aria-hidden="true"></i>                                
+                                  <i>Cartilla</i>
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
+                            </center>
+                           
                         </div>
                     </div>
                 </div>
