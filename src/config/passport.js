@@ -33,11 +33,10 @@ async function(accessToken, refreshToken, profile,done)   {
         }
         else{
             // const SuperUser = await User.find({is_superuser:1,is_active:1}).count();
-            const SuperUser = await User.countDocuments({is_superuser:1,is_active:1});            
+            // const SuperUser = await User.countDocuments({is_superuser:1,is_active:1});            
             if(SuperUser === 1)
             {           
-                return done(null,null,user); //,{message:"Usuario cuenta con SuperUser Logeado desde Google."});
-                // return done(null,false,{message:"Usuario Inactivo, Coordinar con el Admin."});                
+                return done(null,null,user); //,{message:"Usuario cuenta con SuperUser Logeado desde Google."});             
             }
             var userData = new User({
                         provider_id : profile.id,

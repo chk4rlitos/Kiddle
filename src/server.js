@@ -79,6 +79,7 @@ app.use(require('./routes/google.routes'));
 app.use(require('./routes/escalas.routes'));
 app.use(require('./routes/company.routes'));
 app.use(require('./routes/menu.routes'));
+app.use(require('./routes/kiddle.routes'));
 
 
 //Static_Files

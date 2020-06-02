@@ -1,21 +1,7 @@
 $(document).ready(function(){
     $("#companybutton").on("click", function(req,res){
-        // $( "#ValidaCompany" ).submit(function( event ) {
-        //     event.preventDefault();//Esto es para cancelar el envio         
-        //     $('#myModal').modal('show');
-       
-        //     var username = "";
-        //     alert("pasooooooooooo");
-        //     if(username=="" || password==""){
-        //         alert("holaaaaaaaaaaa");
-        //          $('#myModal').modal('show');
-        //          event.preventDefault();//Esto es para cancelar el envio
-        //     }else{
-        //         alert( "Los datos se enviaran!." );
-        //     }  
-        //   });
+
     })
-         
     $('#menu').click(function(e){      
         e.preventDefault();
         var nuevoCSS = {'width':'100%', "transition":'all 500ms linear'};
@@ -103,60 +89,3 @@ function deleteModal(url){
     })  
 }
 
-// function validaModal (url){
-//     alert(url);
-//     $('#form').submit(function (e) {
-//         alert("Hola como estás?");
-//         if (!e.isDefaultPrevented()) {
-//             alert("Hablaaaaaaaaaaaaaaaa?");            
-//             $.ajax({
-//                 type: "POST",
-//                 url: url,
-//                 data: $(this).serialize(),
-//                 success: function (data)
-//                 {
-//                     var messageAlert = 'alert-' + data.type;
-//                     var messageText = data.message;
-
-//                     var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
-//                     if (messageAlert && messageText) {
-//                         $('#form').find('.messages').html(alertBox);
-//                         $('#form')[0].reset();
-//                     }
-//                 }
-//             });
-//             return false;
-//         }
-//     })
-// }
-
-
-// $(function(){
-//     var url = $("form").attr("action");
-    
-//     $("form").submit(function(e){
-//         e.preventDefault();
-//         var formData = $("form").serializeArray();
-//         $.ajax({
-//             url:url,
-//             method="POST",
-//             data:formData
-//         })
-//         .done(function(r,textStatus,xhr){
-//             if(xhr.status=200){
-//                 location.reload(true);
-//             }
-//             else{
-//                 mensaje(textStatus);
-//             }
-//         }).fail(function (error){
-//             mensaje(error.responseText);
-//         })
-//     });
-// });
-
-// function mensaje(){
-//     $('#mensajeRespuesta').load('/partials/messages', function(){       
-//         $(this).modal('show');
-//     })      
-// }

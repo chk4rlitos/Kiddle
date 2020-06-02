@@ -14,7 +14,6 @@ menuCtrl.renderMenu = async (req,res) => {
     const menu = await Menu.aggregate([
       {$match: {companyId: ObjectId(req.params.id) }}
      ]).exec();
-      console.log(menu);
       res.render('menu/list-menu', {user,empresa,menu});      
   }
 
@@ -69,7 +68,7 @@ menuCtrl.renderNewMenuForms = async (req,res) => {
         {
           await newMenu.save();  
           req.flash('success_msg', 'Su registro se hizo de manera satisfacctoria.');
-          res.redirect("/menu/list-menu"+ companyId);          
+          res.redirect("/menu/list-menu/"+ companyId);          
         }
   }      
 }
