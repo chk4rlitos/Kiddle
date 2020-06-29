@@ -167,19 +167,14 @@
   background-color: #eef;
 }
 
-
-
-
-
-
 .btn-floating {
   display: inline-block;
   color: #fff;
   position: relative;
   overflow: hidden;
   z-index: 1;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   line-height: 40px;
   padding: 0;
   background-color: #26a69a;
@@ -189,6 +184,7 @@
   cursor: pointer;
   vertical-align: middle;
 }
+
 
 .btn-floating:hover {
   background-color: #26a69a;
@@ -246,9 +242,26 @@
 }
 
 
+.quantity {
+  position: absolute;
+  display: inline-block;
+  top: 2px;
+  right: 4px;
+  height: 15px;
+  width: 15px;
+  line-height: 15px;
+  text-align: center;
+  background: #ff4b5a;
+  color: #fff;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  font-size: 11px;
+}
 
 
- 
+
+
 
 .invalid{
   border-color: #f55 !important;
@@ -542,6 +555,7 @@
   .col .row {
     margin-left: -0.75rem;
     margin-right: -0.75rem;
+    position: center;
   }
   
   .section {
@@ -579,10 +593,11 @@
             box-sizing: border-box;
     padding: 0 0.75rem;
     min-height: 1px;
+    position: center;
   }
   
   .row .col[class*="push-"], .row .col[class*="pull-"] {
-    position: relative;
+    position: center;
   }
   
   .row .col.s1 {
@@ -590,6 +605,7 @@
     margin-left: auto;
     left: auto;
     right: auto;
+    position: center;
   }
   
   .row .col.s2 {

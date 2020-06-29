@@ -169,7 +169,8 @@ $(document).ready(function(){
              price: {
                 validators: {                    
                      regexp: {
-                        regexp: /^[0-9]^\d*(\.\d{0,2})?$+$/,
+                        //regexp: /^[0-9]^\d*(\.\d{0,2})?$+$/,
+                        regexp:/^[0-9_]+$/,
                         message: 'Ingrese un precio correcto'
                     }                  
                 }

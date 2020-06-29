@@ -72,7 +72,6 @@ function ModalDelete(url){
     deleteModal(url);
 }  
 
-
 function nuevoModal(url){
     $('#nuevo').load(url, function(){      
         $(this).modal('show');
@@ -88,4 +87,3 @@ function deleteModal(url){
         $(this).modal('show');
     })  
 }
-
